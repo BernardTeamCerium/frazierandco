@@ -83,7 +83,7 @@
      https://formspree.io/f/xxxxxxxx) and submissions post straight to it.
      Left empty, the form falls back to opening the visitor's mail client. */
   var FORM_ENDPOINT = '';
-  var CONTACT_EMAIL = 'hello@frazierandco.com';
+  var CONTACT_EMAIL = 'hello@fraziermarketingco.com';
 
   var form = document.getElementById('contactForm');
   var note = document.getElementById('formNote');

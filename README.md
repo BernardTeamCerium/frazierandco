@@ -56,26 +56,48 @@ folder: **/ (root)** → **Save**. First build takes a minute or two; the site t
 
 Check it there first. Every push to this branch redeploys automatically.
 
-**2. Point the domain.** `frazierandco.com` currently resolves to `198.143.165.187`, so
-something is already hosted on it — confirm you're happy to replace it before switching.
-When you are, at your DNS provider **replace** the existing A record(s) for the apex with
-GitHub's four:
+**2. Point the domain at Namecheap.** `fraziermarketingco.com` is currently parked
+(apex → `162.255.119.199`, `www` → `parkingpage.namecheap.com`), so there is nothing live
+to lose.
 
-    A     @     185.199.108.153
-    A     @     185.199.109.153
-    A     @     185.199.110.153
-    A     @     185.199.111.153
-    CNAME www   bernardteamcerium.github.io
+Namecheap → **Domain List** → **Manage** next to `fraziermarketingco.com` → **Advanced DNS**.
 
-(Optional IPv6, as AAAA on `@`: `2606:50c0:8000::153`, `8001::153`, `8002::153`, `8003::153`.)
+First **delete the parking records** — Namecheap ships every domain with a
+`CNAME  www → parkingpage.namecheap.com` and a `URL Redirect` or `A` record on `@`.
+Leaving either in place keeps the parking page winning. Then add:
 
-**3. Tell Pages about the domain.** Add a file named `CNAME` in the repo root containing
-exactly `frazierandco.com`, or enter the domain under Settings → Pages → *Custom domain*
-(which creates the same file). Do this **after** the DNS change — setting it earlier makes
-the `github.io` URL redirect to a domain that isn't serving the new site yet.
+| Type | Host | Value | TTL |
+| --- | --- | --- | --- |
+| A Record | `@` | `185.199.108.153` | Automatic |
+| A Record | `@` | `185.199.109.153` | Automatic |
+| A Record | `@` | `185.199.110.153` | Automatic |
+| A Record | `@` | `185.199.111.153` | Automatic |
+| CNAME Record | `www` | `bernardteamcerium.github.io.` | Automatic |
+
+Namecheap's own nameservers must be selected on the Domain tab (**Nameservers →
+Namecheap BasicDNS**) for the Advanced DNS tab to be the thing actually serving records.
+
+Propagation is usually 5–30 minutes. Check it with:
+
+```bash
+dig +short fraziermarketingco.com          # expect the four 185.199.x.x addresses
+dig +short www.fraziermarketingco.com      # expect bernardteamcerium.github.io
+```
+
+**3. Tell Pages about the domain — after the records resolve.** Settings → Pages →
+*Custom domain* → `fraziermarketingco.com` → Save. GitHub commits a `CNAME` file to this
+branch for you (so `git pull` before your next local change). Doing this before DNS
+resolves makes the `github.io` URL redirect to a domain that isn't serving yet.
 
 **4. Tick "Enforce HTTPS"** once GitHub finishes issuing the certificate (usually minutes,
-occasionally up to an hour).
+occasionally up to an hour). Until then the site may show a certificate warning — that is
+expected and clears itself.
+
+**Email is separate.** Pointing the A records at GitHub does not give you
+`hello@fraziermarketingco.com` — that needs a mailbox (Namecheap Private Email, Google
+Workspace, Fastmail) and its own **MX records**, which live alongside the A records above
+and do not conflict with them. Set the mailbox up before the addresses on the site go
+live, or inbound enquiries will bounce.
 
 `.nojekyll` is committed so Pages serves the files as-is instead of running them through
 Jekyll. `404.html` is a branded not-found page; its links are root-absolute, so it behaves
@@ -100,12 +122,13 @@ lead capture.
 
 ## Things to update before launch
 
-- **Email addresses** — `hello@frazierandco.com` and `newbusiness@frazierandco.com` are
-  placeholders in `index.html`, `assets/js/main.js` and `brand.html`.
+- **Email addresses** — `hello@fraziermarketingco.com` and
+  `newbusiness@fraziermarketingco.com` appear in `index.html` and `assets/js/main.js`.
+  They need mailboxes (see MX note above) or a forwarder before launch.
 - **Contact form** — set `FORM_ENDPOINT` in `assets/js/main.js` (see above). Until then
   submissions fall back to the visitor's mail client.
-- **Canonical / OG URLs** — the `<head>` of `index.html` points at `https://frazierandco.com/`.
-  Update if the domain differs. The share card lives at `assets/img/og-image.png`; to
+- **Canonical / OG URLs** — the `<head>` of `index.html` points at
+  `https://fraziermarketingco.com/`. The share card lives at `assets/img/og-image.png`; to
   regenerate it after a copy change, edit `tools/og-card.html` and run:
 
   ```bash
