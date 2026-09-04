@@ -1,27 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Frazier &amp; Co. monogram">
   <title>Frazier &amp; Co.</title>
-  <defs>
-    <linearGradient id="fcTile" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#132038"/>
-      <stop offset="1" stop-color="#0A1120"/>
-    </linearGradient>
-    <linearGradient id="fcGold" x1="0" y1="1" x2="0" y2="0">
-      <stop offset="0" stop-color="#B8862F"/>
-      <stop offset="1" stop-color="#E9C169"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="14" fill="url(#fcTile)"/>
-  <rect x="0.5" y="0.5" width="63" height="63" rx="13.5" fill="none" stroke="#E9C169" stroke-opacity="0.22"/>
-  <!-- F monogram -->
-  <g fill="#F4F1EA">
+  <rect width="64" height="64" rx="14" fill="#FFFFFF"/>
+  <rect x="0.75" y="0.75" width="62.5" height="62.5" rx="13.25" fill="none" stroke="#E3E9F1" stroke-width="1.5"/>
+  <g fill="#0C1A2B">
     <rect x="12" y="15" width="7" height="34" rx="1.6"/>
     <rect x="12" y="15" width="22" height="7" rx="1.6"/>
     <rect x="12" y="29" width="15" height="7" rx="1.6"/>
   </g>
-  <!-- ascending performance bars -->
-  <g fill="url(#fcGold)">
-    <rect x="36" y="42" width="4.5" height="7" rx="1.4" opacity="0.62"/>
-    <rect x="43" y="36" width="4.5" height="13" rx="1.4" opacity="0.82"/>
+  <g fill="#1D4ED8">
+    <rect x="36" y="42" width="4.5" height="7" rx="1.4" opacity="0.4"/>
+    <rect x="43" y="36" width="4.5" height="13" rx="1.4" opacity="0.68"/>
     <rect x="50" y="29" width="4.5" height="20" rx="1.4"/>
   </g>
 </svg>

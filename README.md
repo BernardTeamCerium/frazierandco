@@ -3,7 +3,10 @@
 Static marketing site for Frazier &amp; Co., a marketing firm handling large-scale brand
 campaign management, lead generation, growth systems and ad-platform monetization.
 
-No build step, no dependencies — plain HTML, CSS and vanilla JS.
+No build step, no dependencies — plain HTML, CSS and vanilla JS. Light palette:
+white ground, ink navy type (`#0C1A2B`), one blue accent (`#1D4ED8`). Every colour is a
+CSS custom property at the top of `assets/css/style.css` — changing the accent is a
+one-line edit.
 
 ## Structure
 
@@ -19,11 +22,12 @@ assets/img/           Logo files
 
 | File | Use |
 | --- | --- |
-| `assets/img/logo-mark.svg` | Monogram tile — avatars, app icons, tight spaces |
-| `assets/img/logo-lockup-dark.svg` | Horizontal lockup for dark backgrounds (primary) |
-| `assets/img/logo-lockup-light.svg` | Horizontal lockup for light backgrounds |
+| `assets/img/logo-lockup-light.svg` | Horizontal lockup for light backgrounds (primary) |
+| `assets/img/logo-lockup-dark.svg` | Reversed lockup for ink, photography and video |
+| `assets/img/logo-mark-solid.svg` | Solid ink monogram tile — nav, avatars, app icons |
+| `assets/img/logo-mark.svg` | Outline monogram tile — light surfaces, print |
 | `assets/img/favicon.svg` | Simplified monogram for 16–32px rendering |
-| `assets/img/logo-mark-512.png` | 512px transparent PNG of the monogram — email signatures, decks, social avatars |
+| `assets/img/logo-mark-512.png` | 512px transparent PNG of the solid monogram — email signatures, decks, avatars |
 | `assets/img/og-image.png` | 1200×630 social share card |
 
 The monogram is pure vector geometry, so it is font-independent. The wordmark in the
