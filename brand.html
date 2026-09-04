@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brand Assets — Frazier &amp; Co.</title>
+<meta name="description" content="Logo files, colour palette and usage notes for the Frazier &amp; Co. identity.">
+<meta name="theme-color" content="#0A1120">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px;margin-top:28px}
+  .swatch{border:1px solid var(--line-soft);border-radius:var(--radius);overflow:hidden}
+  .swatch__chip{height:96px}
+  .swatch__meta{padding:14px 16px;font-size:14px}
+  .swatch__meta b{display:block;font-size:15px;margin-bottom:2px}
+  .swatch__meta code{color:var(--bone-faint);font-size:13px}
+  .logo-tile{border:1px solid var(--line-soft);border-radius:var(--radius-lg);padding:34px;display:flex;
+    align-items:center;justify-content:center;min-height:180px}
+  .logo-tile--dark{background:var(--ink-900)}
+  .logo-tile--light{background:var(--bone)}
+  .logo-tile--mark{background:linear-gradient(160deg,rgba(244,241,234,.05),rgba(244,241,234,.01))}
+  .logo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:28px}
+  .logo-cap{font-size:13px;color:var(--bone-faint);margin-top:10px}
+  .marks{display:flex;align-items:flex-end;gap:26px;flex-wrap:wrap}
+  .dos{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px}
+  @media(max-width:760px){.dos{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="index.html">
+      <img class="brand__mark" src="assets/img/logo-mark.svg" alt="" width="40" height="40">
+      <span class="brand__text">
+        <span class="brand__name">Frazier <span class="amp">&amp;</span> Co.</span>
+        <span class="brand__tag">Brand assets</span>
+      </span>
+    </a>
+    <nav class="nav__links nav__links--static" aria-label="Primary">
+      <a href="index.html">Back to site</a>
+      <a class="btn btn--sm btn--gold" href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="section">
+  <div class="wrap">
+    <header class="section__head">
+      <p class="eyebrow">Identity</p>
+      <h2>The Frazier &amp; Co. mark.</h2>
+      <p class="section__lede">A geometric <strong>F</strong> in bone, followed by three ascending bars in gold — the campaign curve the firm is hired to produce. The mark reads at 16px in a browser tab and at billboard scale without redrawing.</p>
+    </header>
+
+    <div class="logo-grid">
+      <div>
+        <div class="logo-tile logo-tile--dark"><img src="assets/img/logo-lockup-dark.svg" alt="Frazier and Co. horizontal lockup, light type on dark" style="width:100%;max-width:380px"></div>
+        <p class="logo-cap">Primary lockup — dark backgrounds. <code>logo-lockup-dark.svg</code></p>
+      </div>
+      <div>
+        <div class="logo-tile logo-tile--light"><img src="assets/img/logo-lockup-light.svg" alt="Frazier and Co. horizontal lockup, dark type on light" style="width:100%;max-width:380px"></div>
+        <p class="logo-cap">Primary lockup — light backgrounds. <code>logo-lockup-light.svg</code></p>
+      </div>
+      <div>
+        <div class="logo-tile logo-tile--mark">
+          <div class="marks">
+            <img src="assets/img/logo-mark.svg" alt="Frazier and Co. monogram at 96px" width="96" height="96">
+            <img src="assets/img/logo-mark.svg" alt="" width="56" height="56">
+            <img src="assets/img/logo-mark.svg" alt="" width="32" height="32">
+            <img src="assets/img/favicon.svg" alt="" width="16" height="16">
+          </div>
+        </div>
+        <p class="logo-cap">Monogram, 96 / 56 / 32 / 16px. <code>logo-mark.svg</code>, <code>favicon.svg</code></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="wrap">
+    <header class="section__head">
+      <p class="eyebrow">Palette</p>
+      <h2>Ink, bone, gold.</h2>
+      <p class="section__lede">Deep navy carries the weight, bone keeps it readable, and a single gold accent marks the things that matter — numbers, actions and the growth curve in the logo. No second accent colour.</p>
+    </header>
+    <div class="swatches">
+      <div class="swatch"><div class="swatch__chip" style="background:#070C16"></div><div class="swatch__meta"><b>Ink 900</b><code>#070C16</code></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:#0A1120"></div><div class="swatch__meta"><b>Ink 800</b><code>#0A1120</code></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:#0E1729"></div><div class="swatch__meta"><b>Ink 700</b><code>#0E1729</code></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:#E9C169"></div><div class="swatch__meta"><b>Gold</b><code>#E9C169</code></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:#B8862F"></div><div class="swatch__meta"><b>Gold Deep</b><code>#B8862F</code></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:#F4F1EA"></div><div class="swatch__meta"><b>Bone</b><code>#F4F1EA</code></div></div>
+    </div>
+
+    <div class="dos">
+      <div class="result">
+        <h3>Do</h3>
+        <ul class="ticks">
+          <li>Keep clear space around the lockup equal to the height of the monogram</li>
+          <li>Use the dark lockup on ink, photography and video</li>
+          <li>Use the monogram alone for avatars, favicons and app icons</li>
+          <li>Keep gold for accents — it should never carry body copy</li>
+        </ul>
+      </div>
+      <div class="result">
+        <h3>Don't</h3>
+        <ul class="ticks">
+          <li>Recolour, rotate or stretch the mark</li>
+          <li>Place the dark lockup on a busy or light image without a scrim</li>
+          <li>Set the wordmark below 120px wide — use the monogram instead</li>
+          <li>Add effects: drop shadows, outlines, gradients over the type</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <header class="section__head">
+      <p class="eyebrow">Type</p>
+      <h2>Fraunces for voice, Inter for clarity.</h2>
+      <p class="section__lede">Headlines are set in Fraunces — a serif with enough character to read as a firm with a history. Everything operational is Inter: interface, tables, dashboards and long copy.</p>
+    </header>
+    <div class="results">
+      <div class="result">
+        <h3 style="font-size:34px">Fraunces 600</h3>
+        <p>Headlines, statistics, the wordmark. Tight tracking (-0.015em), italic reserved for emphasis and the ampersand.</p>
+      </div>
+      <div class="result">
+        <h3 style="font-family:var(--sans);font-size:22px;font-weight:600">Inter 400 / 500 / 600</h3>
+        <p>Body copy, navigation, forms, labels and every number that appears in a report. Uppercase with 0.18em tracking for eyebrows and labels.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__base" style="margin-top:0;border-top:0">
+    <p>&copy; <span id="year">2026</span> Frazier &amp; Co.</p>
+    <p><a href="index.html" style="color:var(--gold);text-decoration:none">Back to frazierandco.com</a></p>
+  </div>
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
