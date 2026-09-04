@@ -204,7 +204,10 @@ select{appearance:none;color:var(--ink-soft);
                    linear-gradient(135deg,var(--ink-faint) 50%,transparent 50%);
   background-position:calc(100% - 20px) 20px,calc(100% - 14px) 20px;
   background-size:6px 6px;background-repeat:no-repeat}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .form__note{grid-column:1/-1;margin:0;font-size:13px;color:var(--ink-faint)}
+.form__note.is-error{color:#B3261E}
+.btn[disabled]{opacity:.6;cursor:progress}
 .form__note.is-ok{color:var(--accent)}
 
 /* ---------- footer ---------- */

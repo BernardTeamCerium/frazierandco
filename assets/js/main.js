@@ -78,9 +78,38 @@
     counters.forEach(function (el) { co.observe(el); });
   }
 
-  /* Contact form — front-end only until a backend/form service is wired up */
+  /* Contact form
+     Set FORM_ENDPOINT to your form service URL (e.g. a Formspree form:
+     https://formspree.io/f/xxxxxxxx) and submissions post straight to it.
+     Left empty, the form falls back to opening the visitor's mail client. */
+  var FORM_ENDPOINT = '';
+  var CONTACT_EMAIL = 'hello@frazierandco.com';
+
   var form = document.getElementById('contactForm');
   var note = document.getElementById('formNote');
+
+  var setNote = function (text, state) {
+    if (!note) return;
+    note.textContent = text;
+    note.classList.toggle('is-ok', state === 'ok');
+    note.classList.toggle('is-error', state === 'error');
+  };
+
+  var mailtoFallback = function (data) {
+    var body = [
+      'Name: ' + (data.get('name') || ''),
+      'Company: ' + (data.get('company') || ''),
+      'Email: ' + (data.get('email') || ''),
+      'Budget: ' + (data.get('budget') || ''),
+      '',
+      data.get('message') || ''
+    ].join('\n');
+    window.location.href = 'mailto:' + CONTACT_EMAIL
+      + '?subject=' + encodeURIComponent('New enquiry — ' + (data.get('company') || data.get('name') || 'Website'))
+      + '&body=' + encodeURIComponent(body);
+    setNote('Opening your email client — if nothing happens, write to ' + CONTACT_EMAIL + '.', 'ok');
+  };
+
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -89,19 +118,31 @@
         return;
       }
       var data = new FormData(form);
-      var body = [
-        'Name: ' + (data.get('name') || ''),
-        'Company: ' + (data.get('company') || ''),
-        'Email: ' + (data.get('email') || ''),
-        'Budget: ' + (data.get('budget') || ''),
-        '',
-        data.get('message') || ''
-      ].join('\n');
-      window.location.href = 'mailto:hello@frazierandco.com'
-        + '?subject=' + encodeURIComponent('New enquiry — ' + (data.get('company') || data.get('name') || 'Website'))
-        + '&body=' + encodeURIComponent(body);
-      note.textContent = 'Opening your email client — if nothing happens, write to hello@frazierandco.com.';
-      note.classList.add('is-ok');
+      if (data.get('_gotcha')) return;          /* bot filled the honeypot */
+
+      if (!FORM_ENDPOINT) {
+        mailtoFallback(data);
+        return;
+      }
+
+      var button = form.querySelector('button[type="submit"]');
+      var label = button ? button.textContent : '';
+      if (button) { button.disabled = true; button.textContent = 'Sending…'; }
+      setNote('Sending…');
+
+      fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' }
+      }).then(function (res) {
+        if (!res.ok) throw new Error('Request failed: ' + res.status);
+        form.reset();
+        setNote('Thanks — that\'s with us. We\'ll come back to you within one business day.', 'ok');
+      }).catch(function () {
+        setNote('That didn\'t send. Email us directly at ' + CONTACT_EMAIL + ' and we\'ll pick it up.', 'error');
+      }).then(function () {
+        if (button) { button.disabled = false; button.textContent = label; }
+      });
     });
   }
 
